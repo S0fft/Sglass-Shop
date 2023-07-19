@@ -1,23 +1,24 @@
+from django.http import HttpRequest, HttpResponse, JsonResponse
 from django.shortcuts import render
 
-def index(request):
+def index(request: HttpRequest) -> HttpResponse:
     context = {}
 
     return render(request, 'main/index.html', context)
 
-def about(request):
+def about(request: HttpRequest) -> HttpResponse:
     context = {}
 
     return render(request, 'main/about.html', context)
 
 
-def glass(request):
+def glass(request: HttpRequest) -> HttpResponse:
     context = {}
 
     return render(request, 'main/glass.html', context)
 
 
-def contact(request):
+def contact(request: HttpRequest) -> HttpResponse:
     context = {}
 
     return render(request, 'main/contact.html', context)
