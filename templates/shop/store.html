@@ -11,19 +11,21 @@
         </h2>
       </div>
       <div class="glass_container">
+        {% for product in products %}
         <div class="box">
           <div class="img-box">
-            <img src="{% static 'images/g-1.png'%}" alt="">
+            <img src="{{ product.images.url }}" alt="">
           </div>
           <div class="price">
             <h6>
-              $50
+              <p>{{ product.price }} $</p>
             </h6>
             <a href="">
               Buy Now
             </a>
           </div>
         </div>
+        {% endfor %}
       </div>
       <div class="btn-box">
         <a href="">
