@@ -21,7 +21,7 @@ class Product(models.Model):
     created_at = models.DateTimeField(default=timezone.now)
     quantity = models.IntegerField(default=0)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    image = models.ImageField(null=True, blank=True, upload_to='products_images/')
+    image = models.ImageField(null=True, blank=True, upload_to='products_images')
 
     def __str__(self) -> str:
         return f"Name: {self.name}, Category: {self.category}"
