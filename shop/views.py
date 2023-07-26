@@ -31,6 +31,8 @@ def store(request: HttpRequest) -> HttpResponse:
     products = models.Product.objects.all()
     categories = models.Category.objects.all()
 
+    
+
     context = {
         'products': products,
         'categories': categories

@@ -1,0 +1,18 @@
+[
+    {
+        "model": "shop.category",
+        "pk": 5,
+        "fields": {
+            "name": "Myopia",
+            "description": "+1 - +5 points"
+        }
+    },
+    {
+        "model": "shop.category",
+        "pk": 6,
+        "fields": {
+            "name": "Farsightedness",
+            "description": "+1 - +7 points"
+        }
+    }
+]
