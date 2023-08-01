@@ -1,6 +1,6 @@
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render
-from . import models
+from . models import Category, Product
 
 
 def index(request: HttpRequest) -> HttpResponse:
@@ -27,15 +27,15 @@ def contact(request: HttpRequest) -> HttpResponse:
     return render(request, 'shop/contact.html', context)
 
 
-def store(request: HttpRequest) -> HttpResponse:
-    products = models.Product.objects.all()
-    categories = models.Category.objects.all()
-
-    
+def store(request: HttpRequest, category_id=None) -> HttpResponse:
+    if category_id:
+        products = Product.objects.filter(category_id=category_id)
+    else:
+        products = Product.objects.all()
 
     context = {
         'products': products,
-        'categories': categories
+        'categories': Category.objects.all(),
     }
 
     return render(request, 'shop/store.html', context)
