@@ -68,12 +68,9 @@
               <a href="{% url "user:login" %}">
                 Log in
               </a>
-              <a href="">
-                <img src="{% static 'images/cart.png'%}" alt="">
+              <a href="{% url "user:basket" %}">
+                <img src="{% static 'images/cart.png'%}" alt="BASKET">
               </a>
-              <form class="form-inline">
-                <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit"></button>
-              </form>
             </div>
           </div>
         </nav>
