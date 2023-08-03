@@ -13,7 +13,7 @@ def login(request):
     return render(request, 'user/login.html', context)
 
 
-def basket(request):
+def profile_cart(request):
     context = {}
 
-    return render(request, 'user/basket.html', context)
+    return render(request, 'user/profile_cart.html', context)
