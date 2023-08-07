@@ -1,12 +1,23 @@
 from django.shortcuts import render, HttpResponseRedirect
 from django.urls import reverse
-from django.contrib import auth
+from django.contrib import auth, messages
 from django.http import HttpRequest, HttpResponse
-from . forms import UserLoginForm
+from . forms import UserLoginForm, UserRegistrationForm
 
 
 def registration(request: HttpRequest) -> HttpResponse:
-    context = {}
+    if request.method == 'POST':
+        form = UserRegistrationForm(data=request.POST)
+
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Congratulations! You have successfully registered!')
+
+            return HttpResponseRedirect(reverse('user:login'))
+    else:
+        form = UserRegistrationForm
+
+    context = {'form': form}
 
     return render(request, 'user/registration.html', context)
 
