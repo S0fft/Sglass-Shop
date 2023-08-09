@@ -13,8 +13,7 @@ def registration(request: HttpRequest) -> HttpResponse:
 
         if form.is_valid():
             form.save()
-            messages.success(
-                request, 'Congratulations! You have successfully registered!')
+            messages.success(request, 'Congratulations! You have successfully registered!')
 
             return HttpResponseRedirect(reverse('user:login'))
     else:
@@ -49,8 +48,7 @@ def login(request: HttpRequest) -> HttpResponse:
 @login_required
 def profile_cart(request: HttpRequest) -> HttpResponse:
     if request.method == 'POST':
-        form = UserProfileForm(instance=request.user,
-                               data=request.POST, files=request.FILES)
+        form = UserProfileForm(instance=request.user, data=request.POST, files=request.FILES)
 
         if form.is_valid():
             form.save()
