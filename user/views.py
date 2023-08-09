@@ -2,7 +2,9 @@ from django.shortcuts import render, HttpResponseRedirect
 from django.urls import reverse
 from django.contrib import auth, messages
 from django.http import HttpRequest, HttpResponse
-from . forms import UserLoginForm, UserRegistrationForm
+from django.contrib.auth.decorators import login_required
+
+from . forms import UserLoginForm, UserRegistrationForm, UserProfileForm
 
 
 def registration(request: HttpRequest) -> HttpResponse:
@@ -11,7 +13,8 @@ def registration(request: HttpRequest) -> HttpResponse:
 
         if form.is_valid():
             form.save()
-            messages.success(request, 'Congratulations! You have successfully registered!')
+            messages.success(
+                request, 'Congratulations! You have successfully registered!')
 
             return HttpResponseRedirect(reverse('user:login'))
     else:
@@ -43,7 +46,21 @@ def login(request: HttpRequest) -> HttpResponse:
     return render(request, 'user/login.html', context)
 
 
+@login_required
 def profile_cart(request: HttpRequest) -> HttpResponse:
-    context = {}
+    if request.method == 'POST':
+        form = UserProfileForm(instance=request.user,
+                               data=request.POST, files=request.FILES)
+
+        if form.is_valid():
+            form.save()
+
+            return HttpResponseRedirect(reverse('user:profilecart'))
+        else:
+            print(form.errors)
+    else:
+        form = UserProfileForm(instance=request.user)
+
+    context = {'form': form}
 
     return render(request, 'user/profile_cart.html', context)

@@ -4,6 +4,22 @@
 
 {% block content %}
 
+    <div class="row text-center">
+        <div class="col-lg-5">
+            {% if messages or form.non_field_errors %}
+            <div class="alert {% if messages %} alert-success {% else %} alert-warning {% endif %} alert-dismissible fade show" role="alert"
+                 style="margin-top: 50px;">
+                {% if messages %}
+                    {% for message in messages %}
+                            {{ message }}
+                    {% endfor %}
+            {% else %}
+                {{ form.non_field_errors  }}
+            {% endif %}
+            </div>
+            {% endif %}
+
+
 <!-- Sing in  Form -->
 <section class="sign-in">
     <div class="container">
@@ -25,10 +41,10 @@
                         <label for="form.password.id_for_lable"><i class="zmdi zmdi-lock"></i></label>
                         {{ form.password }}
                     </div>
-                    <div class="form-group">
+                    {% comment %} <div class="form-group">
                         <input type="checkbox" name="remember-me" id="remember-me" class="agree-term" />
                         <label for="remember-me" class="label-agree-term"><span><span></span></span>Remember me</label>
-                    </div>
+                    </div> {% endcomment %}
                     <div class="form-group form-button">
                         <input type="submit" name="signin" id="signin" class="form-submit" value="Log in"/>
                     </div>
