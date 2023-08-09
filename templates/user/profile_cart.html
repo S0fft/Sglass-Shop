@@ -68,12 +68,18 @@
                 </ul>
               </div>
               <div class="quote_btn-container ">
-                <a href="{% url "user:login" %}">
+                {% if user.is_authenticated %}
+              <a href="{% url "user:profilecart" %}">
+                PROFILE & CART
+              </a>
+              <a class="ml-5" href="{% url "user:logout" %}">
+                Log out
+              </a>
+            {% else %}
+                <a class="ml-5" href="{% url "user:login" %}">
                   Log in
                 </a>
-                <a class="ml-5"  href="{% url "user:profilecart" %}">
-                 PROFILE & CART
-                </a>
+            {% endif %}
               </div>
             </div>
           </nav>

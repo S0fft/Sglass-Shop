@@ -64,3 +64,9 @@ def profile_cart(request: HttpRequest) -> HttpResponse:
     context = {'form': form}
 
     return render(request, 'user/profile_cart.html', context)
+
+
+def logout(request: HttpRequest) -> HttpResponse:
+    auth.logout(request)
+
+    return HttpResponseRedirect(reverse('shop:index'))
