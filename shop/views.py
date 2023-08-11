@@ -6,27 +6,19 @@ from . models import Category, Product, Basket
 
 
 def index(request: HttpRequest) -> HttpResponse:
-    context = {}
-
-    return render(request, 'shop/index.html', context)
+    return render(request, 'shop/index.html')
 
 
 def about(request: HttpRequest) -> HttpResponse:
-    context = {}
-
-    return render(request, 'shop/about.html', context)
+    return render(request, 'shop/about.html')
 
 
 def glass(request: HttpRequest) -> HttpResponse:
-    context = {}
-
-    return render(request, 'shop/glass.html', context)
+    return render(request, 'shop/glass.html')
 
 
 def contact(request: HttpRequest) -> HttpResponse:
-    context = {}
-
-    return render(request, 'shop/contact.html', context)
+    return render(request, 'shop/contact.html')
 
 
 def store(request: HttpRequest, category_id=None) -> HttpResponse:
@@ -59,7 +51,7 @@ def basket_add(request: HttpRequest, product_id: int) -> HttpResponse:
 
 
 @login_required
-def basket_remove(request, basket_id):
+def basket_remove(request: HttpRequest, basket_id: int) -> HttpResponse:
     basket = Basket.objects.get(id=basket_id)
     basket.delete()
 

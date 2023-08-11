@@ -5,6 +5,7 @@ from django.http import HttpRequest, HttpResponse
 from django.contrib.auth.decorators import login_required
 
 from . forms import UserLoginForm, UserRegistrationForm, UserProfileForm
+from shop.models import Basket
 
 
 def registration(request: HttpRequest) -> HttpResponse:
@@ -59,7 +60,7 @@ def profile_cart(request: HttpRequest) -> HttpResponse:
     else:
         form = UserProfileForm(instance=request.user)
 
-    context = {'form': form}
+    context = {'form': form, 'baskets': Basket.objects.all()}
 
     return render(request, 'user/profile_cart.html', context)
 

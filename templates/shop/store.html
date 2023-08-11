@@ -26,7 +26,7 @@
             <h6>
               <p>{{ product.price }} $</p>
             </h6>
-            <a href="">
+            <a href="{% url 'shop:basket_add' product.id %}">
               Buy Now
             </a>
           </div>
