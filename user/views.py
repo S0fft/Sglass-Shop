@@ -60,7 +60,7 @@ def profile_cart(request: HttpRequest) -> HttpResponse:
     else:
         form = UserProfileForm(instance=request.user)
 
-    context = {'form': form, 'baskets': Basket.objects.all()}
+    context = {'form': form, 'baskets': Basket.objects.filter(user=request.user)}
 
     return render(request, 'user/profile_cart.html', context)
 

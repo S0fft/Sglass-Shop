@@ -37,7 +37,7 @@ def store(request: HttpRequest, category_id=None) -> HttpResponse:
 
 @login_required
 def basket_add(request: HttpRequest, product_id: int) -> HttpResponse:
-    product = Product.objects.get(product_id)
+    product = Product.objects.get(id=product_id)
     baskets = Basket.objects.filter(user=request.user, product=product)
 
     if not baskets.exists():

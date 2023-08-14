@@ -33,7 +33,7 @@ class Product(models.Model):
 
 
 class BasketQuerySet(models.QuerySet):
-    def total_sum(self) -> int:
+    def total_summ(self) -> int:
         return sum(basket.sum() for basket in self)
 
     def total_quantity(self) -> int:
@@ -51,5 +51,5 @@ class Basket(models.Model):
     def __str__(self) -> str:
         return f'Cart for: {self.user.username} | Product: {self.product.name}'
 
-    def mult_product(self) -> int:
+    def sum(self) -> int:
         return self.product.price * self.quantity
