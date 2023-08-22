@@ -6,9 +6,6 @@ from django.views.generic.base import TemplateView
 from . models import Category, Product, Basket
 
 
-# def index(request: HttpRequest) -> HttpResponse:
-#     return render(request, 'shop/index.html')
-
 class IndexView(TemplateView):
     template_name = 'shop/index.html'
 
