@@ -1,13 +1,12 @@
 from django.contrib.auth.decorators import login_required
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import HttpResponseRedirect, render
-from django.views.generic.base import TemplateView
 
 from .models import Basket, Category, Product
 
 
-class IndexView(TemplateView):
-    template_name = 'shop/index.html'
+def index(request: HttpRequest) -> HttpResponse:
+    return render(request, 'shop/index.html')
 
 
 def about(request: HttpRequest) -> HttpResponse:
