@@ -1,11 +1,12 @@
-from django.shortcuts import render, HttpResponseRedirect
-from django.urls import reverse
 from django.contrib import auth, messages
-from django.http import HttpRequest, HttpResponse
 from django.contrib.auth.decorators import login_required
+from django.http import HttpRequest, HttpResponse
+from django.shortcuts import HttpResponseRedirect, render
+from django.urls import reverse
 
-from . forms import UserLoginForm, UserRegistrationForm, UserProfileForm
 from shop.models import Basket
+
+from .forms import UserLoginForm, UserProfileForm, UserRegistrationForm
 
 
 def registration(request: HttpRequest) -> HttpResponse:

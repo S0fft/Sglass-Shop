@@ -1,7 +1,8 @@
 from django.contrib import admin
-from . models import User
+
 from shop.admin import BasketAdmin
 
+from .models import User
 
 
 @admin.register(User)

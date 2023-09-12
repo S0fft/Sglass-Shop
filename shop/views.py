@@ -1,9 +1,9 @@
-from django.http import HttpRequest, HttpResponse
-from django.shortcuts import render, HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
+from django.http import HttpRequest, HttpResponse
+from django.shortcuts import HttpResponseRedirect, render
 from django.views.generic.base import TemplateView
 
-from . models import Category, Product, Basket
+from .models import Basket, Category, Product
 
 
 class IndexView(TemplateView):
