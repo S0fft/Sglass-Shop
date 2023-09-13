@@ -10,6 +10,8 @@ DEBUG = config('DEBUG', cast=bool)
 
 ALLOWED_HOSTS = []
 
+DOMAIN_NAME = 'http://localhost:8000'
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -100,3 +102,9 @@ MEDIA_ROOT = BASE_DIR / 'media'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'user.User'
+
+EMAIL_HOST = config('EMAIL_HOST')
+EMAIL_PORT = config('EMAIL_PORT')
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+EMAIL_USE_SSL = config('EMAIL_USE_SSL', cast=bool)

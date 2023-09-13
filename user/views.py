@@ -5,8 +5,10 @@ from django.shortcuts import HttpResponseRedirect, render
 from django.urls import reverse
 
 from shop.models import Basket
+from user.models import User
 
 from .forms import UserLoginForm, UserProfileForm, UserRegistrationForm
+from .models import EmailVerification
 
 
 def registration(request: HttpRequest) -> HttpResponse:
@@ -70,3 +72,19 @@ def logout(request: HttpRequest) -> HttpResponse:
     auth.logout(request)
 
     return HttpResponseRedirect(reverse('shop:index'))
+
+
+def email_verification(request: HttpRequest, code: int, email: str) -> HttpResponse:
+    try:
+        user = User.objects.get(email=email)
+        email_verifications = EmailVerification.objects.filter(user=user, code=code)
+
+        if email_verifications.exists() and not email_verifications.first().is_expired():
+            user.is_verified_email = True
+            user.save()
+            return render(request, 'user/email_verification.html')
+        else:
+            return HttpResponseRedirect(reverse('index'))
+    except User.DoesNotExist:
+
+        return HttpResponseRedirect(reverse('index'))
