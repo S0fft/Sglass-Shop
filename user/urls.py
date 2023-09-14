@@ -9,6 +9,5 @@ urlpatterns = [
     path('login/', views.login, name='login'),
     path('logout/', views.logout, name='logout'),
     path('profilecart/', views.profile_cart, name='profilecart'),
-    path('verify/<str:email>/<uuid:code>/', views.email_verification, name='email_verification'),
-
+    path('verify/<str:email>/<uuid:code>/', views.EmailVerificationView.as_view(), name='email_verification'),
 ]

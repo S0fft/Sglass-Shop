@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import HttpResponseRedirect, render
 from django.urls import reverse
+from django.views.generic import TemplateView
 
 from shop.models import Basket
 from user.models import User
@@ -74,17 +75,17 @@ def logout(request: HttpRequest) -> HttpResponse:
     return HttpResponseRedirect(reverse('shop:index'))
 
 
-def email_verification(request: HttpRequest, code: int, email: str) -> HttpResponse:
-    try:
-        user = User.objects.get(email=email)
+class EmailVerificationView(TemplateView):
+    template_name = 'users/email_verification.html'
+
+    def get(self, request, *args, **kwargs):
+        code = kwargs['code']
+        user = User.objects.get(email=kwargs['email'])
         email_verifications = EmailVerification.objects.filter(user=user, code=code)
 
         if email_verifications.exists() and not email_verifications.first().is_expired():
             user.is_verified_email = True
             user.save()
-            return render(request, 'user/email_verification.html')
+            return super(EmailVerificationView, self).get(request, *args, **kwargs)
         else:
             return HttpResponseRedirect(reverse('index'))
-    except User.DoesNotExist:
-
-        return HttpResponseRedirect(reverse('index'))
