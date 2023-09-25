@@ -1,6 +1,8 @@
 {% extends 'user/base.html' %}
 {% load static %}
 
+{% load socialaccount %}
+
 
 {% block content %}
 
@@ -52,9 +54,7 @@
                 <div class="social-login">
                     <span class="social-label">Or login with</span>
                     <ul class="socials">
-                        <li><a href="#"><i class="display-flex-center zmdi zmdi-facebook"></i></a></li>
-                        <li><a href="#"><i class="display-flex-center zmdi zmdi-twitter"></i></a></li>
-                        <li><a href="#"><i class="display-flex-center zmdi zmdi-google"></i></a></li>
+                        <a href="{% provider_login_url 'github' %}">GitHub<i class="fab fa-github fa-2x" style="color: #303030;"></i></a>
                     </ul>
                 </div>
             </div>
