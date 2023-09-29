@@ -103,16 +103,27 @@ STATICFILES_DIRS = [
 ]
 
 MEDIA_URL = '/media/'
+
 MEDIA_ROOT = BASE_DIR / 'media'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'user.User'
 
+LOGIN_URL = '/users/login/'
+
+LOGIN_REDIRECT_URL = '/'
+
+LOGOUT_REDIRECT_URL = '/'
+
 EMAIL_HOST = config('EMAIL_HOST')
+
 EMAIL_PORT = config('EMAIL_PORT')
+
 EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+
 EMAIL_USE_SSL = config('EMAIL_USE_SSL', cast=bool)
 
 AUTHENTICATION_BACKENDS = [
