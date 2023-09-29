@@ -9,7 +9,6 @@ urlpatterns = [
     path('user/', include('user.urls', namespace='user')),
 
     path('accounts/', include('allauth.urls')),
-
 ]
 
 if settings.DEBUG:
