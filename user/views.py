@@ -76,7 +76,7 @@ def logout(request: HttpRequest) -> HttpResponse:
 
 
 class EmailVerificationView(TemplateView):
-    template_name = 'users/email_verification.html'
+    template_name = 'user/email_verification.html'
 
     def get(self, request, *args, **kwargs):
         code = kwargs['code']
