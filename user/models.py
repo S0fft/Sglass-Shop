@@ -8,6 +8,7 @@ from django.utils.timezone import now
 
 class User(AbstractUser):
     image = models.ImageField(upload_to='user_images', null=True, blank=True)
+    is_verified_email = models.BooleanField(default=False)
 
 
 class EmailVerification(models.Model):
