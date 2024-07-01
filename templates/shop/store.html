@@ -1,0 +1,67 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+
+{% block content %}
+
+  <section class="glass_section layout_padding">
+    <div class="container">
+      <div class="heading_container">
+        <h2>
+          <span> Our </span> Glasses
+        </h2>
+      </div>
+      <div class="d-flex justify-content-between">
+      {% for category in categories %}
+        <a class="btn btn-info w-25 p-10 mb-4" href="{% url 'shop:category' category.id %}">{{ category.name }}</a>
+        {% endfor %}
+        <a class="btn btn-info w-25 p-10 mb-4" href="{% url 'shop:store' %}">All glass</a>
+      </div>
+      <div class="glass_container">
+        {% for product in products %}
+        <div class="box">
+          <div class="img-box">
+            <img src="{{ product.image.url }}" alt="image">
+          </div>
+          <div class="price">
+            <h6>
+              <p>{{ product.price }} $</p>
+            </h6>
+            <a href="{% url 'shop:basket_add' product.id %}">
+              Buy Now
+            </a>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      <div class="btn-box">
+      </div>
+    </div>
+  </section>
+  {% comment %} {% if is_paginated %}
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item {% if not page_obj.has_previous  %} disabled {% endif %}">
+                        <a class="page-link"
+                        href="{% if page_obj.has_previous %} {% url 'products:paginator' page_obj.previous_page_number %} {% else %} # {% endif %}"
+                        tabindex="-1" aria-disabled="true">
+                        Предыдущая
+                    </a>
+                    </li>
+                    {% for page in paginator.page_range %}
+                        <li class="page-item">
+                            <a class="page-link" href="{% url 'products:paginator' page %}">
+                                {{ page }}
+                            </a>
+                        </li>
+                    {% endfor %}
+                    <li class="page-item {% if not page_obj.has_next %} disabled {% endif %}">
+                        <a class="page-link"
+                        href="{% if page_obj.has_next %} {% url 'products:paginator' page_obj.next_page_number %} {% else %} # {% endif %}">
+                        Слеудующая
+                    </a>
+                    </li>
+                </ul>
+            </nav> {% endcomment %}
+            {% comment %} {% endif %} {% endcomment %}
+
+{% endblock %}
