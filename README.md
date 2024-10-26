@@ -64,7 +64,7 @@ python manage.py runserver
 
 <details>
 <summary><h2> Project Setup on Unix-Like Systems </h2></summary>
-These commands do the same thing as described above but only on Unix systems: 
+These commands do the same thing as described above but only on Unix systems:
 <br>
 
 ### - Stack Installing
