@@ -4,11 +4,11 @@
 Оnline glasses store offering basic features for users. The project is built on an SSR architecture and includes four applications: products, users, orders, and uses Function-Based Views (FBV).
 
 #### Stack:
- - Pyhton
+ - Python
  - Django
  - PostgreSQL
 
-And other small libraries specified in `requirements.txt`.
+Additional libraries are specified in the `requirements.txt` file.
 
 ## Project Setup on Windows
 
@@ -61,6 +61,7 @@ Then, run server:
 ```powershell
 python manage.py runserver
 ```
+After starting the server, you can access the application by navigating to `http://127.0.0.1:8000` in your browser.
 
 <details>
 <summary><h2> Project Setup on Unix-Like Systems </h2></summary>
@@ -83,11 +84,11 @@ You will see the project files appear in your directory.
 
 ### - Creating a Virtual Environment
 ```bash
-python3 -m venv ../venv
+python3 -m venv ./venv
 ```
 
 ```bash
-source ../venv/bin/activate
+source ./venv/bin/activate
 ```
 
 ### - Installing the Requirements
@@ -109,3 +110,4 @@ Then, run server:
 ```powershell
 python3 manage.py runserver
 ```
+After starting the server, you can access the application by navigating to `http://127.0.0.1:8000` in your browser.
