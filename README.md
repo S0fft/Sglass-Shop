@@ -105,6 +105,7 @@ python3 manage.py migrate
 ```
 
 ### - Running the Server
+Then, run server:
 ```powershell
 python3 manage.py runserver
 ```
