@@ -1,7 +1,9 @@
 # Sglass
 #### Glasses-Shop — SSR Ecommerce Project on Django (FBV)
 
-Оnline glasses store offering basic features for users. The project is built on an SSR architecture and includes four applications: products, users, orders, and uses Function-Based Views (FBV).
+Оnline glasses store offering basic features for users. 
+The project is built on an SSR architecture and includes four applications:
+products, users, orders, and uses Function-Based Views (FBV).
 
 #### Stack:
  - Python
