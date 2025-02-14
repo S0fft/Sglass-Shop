@@ -1,4 +1,4 @@
-# Sglass
+# Sglass-Shop
 #### Glasses-Shop — SSR Ecommerce Project on Django (FBV)
 
 Оnline glasses store offering basic features for users. 
